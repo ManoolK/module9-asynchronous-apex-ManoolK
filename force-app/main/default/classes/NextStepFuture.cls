@@ -119,7 +119,7 @@ public with sharing class NextStepFuture {
         // Tried to bypass ApexCRUDViolation, but it doesn't help. I don't know why.
         Schema.DescribeSObjectResult sor = UserRole.SObjectType.getDescribe();
         if (sor.isCreateable() && sor.isUpdateable()) {
-            Database.upsert(role);
+            Database.upsert(role, AccessLevel.USER_MODE);
         }
     }
 }
